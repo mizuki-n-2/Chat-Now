@@ -1,0 +1,28 @@
+.left,
+.right,
+.form {
+  position: fixed;
+}
+
+.left {
+  width: 85%;
+}
+
+.right {
+  right: 0;
+  width: 15%;
+}
+
+.form {
+  bottom: 0;
+  width: 82.5%;
+}
+
+.msg {
+  height: 65vh;
+}
+
+
+.msg-body {
+  overflow-y: scroll;
+}
