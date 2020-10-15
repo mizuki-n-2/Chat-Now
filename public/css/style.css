@@ -1,28 +1,22 @@
-.left,
-.right,
-.form {
-  position: fixed;
+.msg-wrapper {
+  height: 70vh;
 }
 
-.left {
-  width: 85%;
+.msg-title {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
 }
-
-.right {
-  right: 0;
-  width: 15%;
-}
-
-.form {
-  bottom: 0;
-  width: 82.5%;
-}
-
-.msg {
-  height: 65vh;
-}
-
 
 .msg-body {
   overflow-y: scroll;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.message {
+  width: 100%;
 }

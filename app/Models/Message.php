@@ -10,14 +10,11 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'name', 'message'
+        'user_id', 'name', 'message', 'date_time'
     ];
 
     protected $guarded = [
         'create_at', 'update_at'
     ];
 
-    protected $casts = [
-        'created_at' => 'datetime:m/j(D) g:i A',
-    ];
 }

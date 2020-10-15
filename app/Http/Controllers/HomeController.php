@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index()
     {
         $messages = Message::get();
-        return view('home');
+        return view('home',['messages' => $messages]);
     }
 
     public function add(Request $request) 
@@ -39,18 +39,23 @@ class HomeController extends Controller
 
         $user = Auth::user();
         
-        Message::create([
-            'user_id' => $user->id,
-            'name' => $user->name,
-            'message' => $request->message
-        ]);
+        $now = Carbon::now();
+       
+        $date = date('m/j(D) g:i A', strtotime($now));
 
+        $msg = new Message;
+        $msg->user_id = $user->id;
+        $msg->name = $user->name;
+        $msg->message = $request->message;
+        $msg->date_time = $date;
+        $msg->save();
+        
         return redirect('/home');
     }
 
     public function getData()
     {
-        $messages = Message::orderBy('created_at','asc')->get();
+        $messages = Message::orderBy('created_at','desc')->get();
         $json = ['messages' => $messages];
         return response()->json($json);
     }
