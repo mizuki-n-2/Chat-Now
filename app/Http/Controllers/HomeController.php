@@ -38,15 +38,13 @@ class HomeController extends Controller
         ]);
 
         $user = Auth::user();
-        $now = Carbon::now();
-        $params = [
+        
+        Message::create([
             'user_id' => $user->id,
             'name' => $user->name,
-            'message' => $request->message,
-            'created_at' => $now,
-        ];
+            'message' => $request->message
+        ]);
 
-        DB::table('messages')->insert($params);
         return redirect('/home');
     }
 
