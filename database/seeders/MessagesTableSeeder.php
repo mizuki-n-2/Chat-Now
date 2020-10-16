@@ -18,6 +18,7 @@ class MessagesTableSeeder extends Seeder
             'user_id' => 1,
             'name' => 'test',
             'message' => 'こんにちは',
+            'image' => '',
             'date_time' => '10/11(Sun) 11:35 AM'
         ]);
     }

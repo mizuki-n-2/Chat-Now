@@ -10,7 +10,7 @@ class Message extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'name', 'message', 'date_time'
+        'user_id', 'name', 'message', 'date_time', 'image'
     ];
 
     protected $guarded = [

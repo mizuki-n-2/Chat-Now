@@ -1,15 +1,7 @@
-.msg-wrapper {
-  height: 70vh;
-}
-
 .msg-title {
   font-size: 22px;
   font-weight: bold;
   text-align: center;
-}
-
-.msg-body {
-  overflow-y: scroll;
 }
 
 .name {
@@ -19,4 +11,22 @@
 
 .message {
   width: 100%;
+}
+
+#icon-btn:hover {
+  color: greenyellow;
+}
+
+.error_message {
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+}
+
+#img {
+  width: 30%;
+}
+
+.textarea {
+  border-color: #000;
 }

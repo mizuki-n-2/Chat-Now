@@ -33,23 +33,37 @@ class HomeController extends Controller
     public function add(Request $request) 
     {
         $validatedData = $request->validate([
-            'message' => 'required',
+            'message' => 'nullable',
+            'image' => 'nullable|file|image',
         ]);
 
-        $user = Auth::user();
-        
-        $now = Carbon::now();
-       
-        $date = date('m/j(D) g:i A', strtotime($now));
+        if($request->message === null && $request->file('image') === null) {
 
-        $msg = new Message;
-        $msg->user_id = $user->id;
-        $msg->name = $user->name;
-        $msg->message = $request->message;
-        $msg->date_time = $date;
-        $msg->save();
-        
-        return redirect('/home');
+            return redirect('/home')->with('error_message','メッセージか画像のどちらかを入力してください'); 
+
+        } else {
+
+            $user = Auth::user();
+            $now = Carbon::now();
+            $date = date('m/j(D) g:i A', strtotime($now));
+
+            if ($request->file('image') === null) {
+                $image = '';
+            } else {
+                $path = $request->file('image')->store('public/image');
+                $image = basename($path);
+            }
+
+            Message::create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'message' => nl2br($request->message),
+                'image' => $image,
+                'date_time' => $date
+            ]);
+            
+            return redirect('/home');
+        }
     }
 
     public function getData()
