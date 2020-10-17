@@ -23,7 +23,7 @@
 
     {{-- fontawesome --}}
     <script src="https://kit.fontawesome.com/b9899ca194.js" crossorigin="anonymous"></script>
-    
+
 </head>
 <body>
     <div id="app">

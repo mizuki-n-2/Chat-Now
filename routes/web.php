@@ -29,4 +29,4 @@ Route::get('/phpinfo', function () {
     return view('phpinfo');
 });
 
-Route::get('/result/ajax', [HomeController::class, 'getData']);
+Route::get('/result/ajax', [HomeController::class, 'getData'])->name('ajax');
