@@ -54,19 +54,19 @@
                             <div id="name" class="name"></div>
                             <div id="date" class="text-muted date"></div>
                             <div id="message" class="message mb-3 ml-3"></div>
-                            <img src="{{ asset('./image/001.JPG') }}" id="img" class="mx-auto d-none"> 
+                            <img src="{{ asset('image/001.JPG') }}" id="img" class="mx-auto d-none"> 
                         </div>  
                     </div>  
 
                 </div>
             </div>
         </div>
-
+        
     </div>
 </div>
 
 @endsection
 
 @section('js')
-    <script src="{{ asset('./js/message.js') }}"></script>
+    <script src="{{ asset('js/message.js') }}"></script>
 @endsection
