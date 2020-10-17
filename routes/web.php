@@ -15,10 +15,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-if (app()->environment('heroku')) {
-    URL::forceScheme('https');
-}
-
 Auth::routes();
 
 Route::get('/', function() {
@@ -34,3 +30,6 @@ Route::get('/phpinfo', function () {
 
 Route::get('/result/ajax', [HomeController::class, 'getData'])->name('ajax');
 
+if (app()->environment('production')) {
+    URL::forceScheme('https');
+}
