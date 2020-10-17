@@ -18,7 +18,7 @@ $(function () {
 
 function get_data() {
   $.ajax({
-    url: "https://boiling-everglades-95796.herokuapp.com/result/ajax/",
+    url: "result/ajax/",
     dataType: "json",
     success: data => {
       // console.log(data);
