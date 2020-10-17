@@ -15,14 +15,14 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Auth::routes();
 
+// Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
+
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/add', [HomeController::class, 'add'])->name('add');
+
 Route::get('/phpinfo', function () {
     return view('phpinfo');
 });
