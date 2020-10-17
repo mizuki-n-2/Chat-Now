@@ -29,7 +29,3 @@ Route::get('/phpinfo', function () {
 });
 
 Route::get('/result/ajax', [HomeController::class, 'getData'])->name('ajax');
-
-if (app()->environment('production')) {
-    URL::forceScheme('https');
-}
