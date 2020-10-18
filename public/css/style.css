@@ -1,32 +1,92 @@
-.msg-title {
-  font-size: 22px;
-  font-weight: bold;
-  text-align: center;
+.left {
+    width: 65%;
+}
+
+.right {
+    width: 35%;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
 }
 
 .name {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .message {
-  width: 100%;
+    width: 100%;
 }
 
 #icon-btn:hover {
-  color: greenyellow;
+    color: greenyellow;
 }
 
 .error_message {
-  text-align: center;
-  height: 50px;
-  line-height: 50px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
 }
 
 #img {
-  width: 30%;
+    width: 30%;
 }
 
 .textarea {
-  border-color: #000;
+    border-color: #000;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.profile-img {
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.profile-container {
+    width: 65%;
+}
+
+.user-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* resposive */
+@media screen and (max-width: 768px) {
+    .user-info {
+        display: block;
+    }
+
+    .profile-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .profile-img {
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    .profile-img {
+        width: 70px;
+        height: 70px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .profile-img {
+        width: 50px;
+        height: 50px;
+    }
 }

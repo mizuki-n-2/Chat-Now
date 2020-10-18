@@ -23,6 +23,8 @@ Route::get('/', function() {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/add', [HomeController::class, 'add'])->name('add');
+Route::get('/edit', [HomeController::class, 'edit'])->name('edit');
+Route::put('/update', [HomeController::class, 'update'])->name('update');
 
 Route::get('/phpinfo', function () {
     return view('phpinfo');

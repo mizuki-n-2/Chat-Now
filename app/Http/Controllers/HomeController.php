@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Message;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -27,20 +28,19 @@ class HomeController extends Controller
     public function index()
     {
         $messages = Message::get();
-        return view('home',['messages' => $messages]);
+        $user = Auth::user();
+        return view('home', ['messages' => $messages, 'user' => $user]);
     }
 
-    public function add(Request $request) 
+    public function add(Request $request)
     {
         $validatedData = $request->validate([
             'message' => 'nullable',
             'image' => 'nullable|file|image',
         ]);
 
-        if($request->message === null && $request->file('image') === null) {
-
-            return redirect('/home')->with('error_message','メッセージか画像のどちらかを入力してください'); 
-
+        if ($request->message === null && $request->file('image') === null) {
+            return redirect('/home')->with('error_message', 'メッセージか画像のどちらかを入力してください');
         } else {
 
             $user = Auth::user();
@@ -61,15 +61,44 @@ class HomeController extends Controller
                 'image' => $image,
                 'date_time' => $date
             ]);
-            
+
             return redirect('/home');
         }
     }
 
     public function getData()
     {
-        $messages = Message::orderBy('created_at','desc')->get();
+        $messages = Message::orderBy('created_at', 'desc')->get();
         $json = ['messages' => $messages];
         return response()->json($json);
+    }
+
+    public function edit() {
+        $user = Auth::user();
+        return view('edit', ['user' => $user]);
+    }
+
+    public function update(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'profile' => 'nullable',
+            'image' => 'nullable|file|image',
+        ]);
+
+        $user =Auth::user();
+
+        if ($request->file('image') === null) {
+            $image = '';
+        } else {
+            $path = $request->file('image')->store('public/prof-img');
+            $image = basename($path);
+        }
+
+        User::where('id', $user->id)->update([
+            'name' => $request->name,
+            'profile' => $request->profile,
+            'profile_img' => $image, 
+        ]);
+        return redirect('home');
     }
 }
