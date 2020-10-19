@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,11 +24,7 @@ Route::get('/', function() {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/add', [HomeController::class, 'add'])->name('add');
-Route::get('/edit', [HomeController::class, 'edit'])->name('edit');
-Route::put('/update', [HomeController::class, 'update'])->name('update');
-
-Route::get('/phpinfo', function () {
-    return view('phpinfo');
-});
+Route::get('/edit', [UserController::class, 'edit'])->name('edit')->middleware('auth');
+Route::put('/update', [UserController::class, 'update'])->name('update');
 
 Route::get('/result/ajax', [HomeController::class, 'getData'])->name('ajax');
